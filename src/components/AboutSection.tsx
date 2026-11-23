@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2, GraduationCap, MapPin } from 'lucide-react';
+import { Code2, Terminal, Cpu, Database, CheckCircle, Radio } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { sound } from '../utils/sound';
 
@@ -26,63 +26,87 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Grid: Photo & Editorial Biography */}
+        {/* Grid: Academic Dossier & Editorial Biography */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Ratul's Portrait in Architectural HUD Frame */}
+          {/* Left Column: Academic & Technical Dossier HUD */}
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <div className="relative rounded-2xl bg-[#0F1218] border border-white/10 p-3 overflow-hidden shadow-2xl group">
-              {/* Photo Frame Header */}
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 font-mono text-[10px] text-zinc-400">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#C8FF00]" />
-                  <span className="text-white font-bold">RATUL_IDENTIFIER</span>
+            <div className="rounded-2xl bg-[#0F1218] border border-white/10 p-5 shadow-2xl space-y-4">
+              {/* Dossier Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
+                <div className="flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-[#C8FF00]" />
+                  <span className="text-white font-bold tracking-wider">ACADEMIC_DOSSIER // SPEC</span>
                 </div>
-                <span>24.7471° N, 90.4203° E</span>
+                <span className="text-[10px] text-[#C8FF00] font-bold px-1.5 py-0.5 rounded bg-[#C8FF00]/10 border border-[#C8FF00]/20">
+                  VERIFIED
+                </span>
               </div>
 
-              {/* Photo Image with subtle filter */}
-              <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-black/40">
-                <img
-                  src="/images/ratul.jpg"
-                  alt="Kawser Ahmed Ratul"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 filter grayscale contrast-110 group-hover:grayscale-0"
-                />
+              {/* Student Identity Banner */}
+              <div className="p-4 rounded-xl bg-black/40 border border-white/5 space-y-2">
+                <div className="flex items-center justify-between font-mono text-xs">
+                  <span className="text-zinc-400">NAME:</span>
+                  <span className="text-white font-bold">{PORTFOLIO_DATA.personal.name}</span>
+                </div>
+                <div className="flex items-center justify-between font-mono text-xs">
+                  <span className="text-zinc-400">INSTITUTION:</span>
+                  <span className="text-zinc-200 font-semibold">{PORTFOLIO_DATA.personal.institution}</span>
+                </div>
+                <div className="flex items-center justify-between font-mono text-xs">
+                  <span className="text-zinc-400">PROGRAM:</span>
+                  <span className="text-[#C8FF00] font-semibold">B.Sc. in CSE (Undergraduate)</span>
+                </div>
+                <div className="flex items-center justify-between font-mono text-xs">
+                  <span className="text-zinc-400">COORDINATES:</span>
+                  <span className="text-zinc-400">{PORTFOLIO_DATA.personal.coordinates}</span>
+                </div>
+              </div>
 
-                {/* Subtle corner crosshairs */}
-                <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-[#C8FF00]" />
-                <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#C8FF00]" />
-                <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-[#C8FF00]" />
-                <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-[#C8FF00]" />
-
-                {/* Bottom Overlay Label */}
-                <div className="absolute bottom-3 inset-x-3 p-2.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 font-mono text-xs flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-white text-[11px]">Kawser Ahmed Ratul</div>
-                    <div className="text-[10px] text-zinc-400">Dept. of CSE, MEC</div>
+              {/* Coursework & Foundations */}
+              <div className="space-y-2 font-mono text-xs">
+                <div className="text-[11px] text-zinc-500 uppercase tracking-wider font-bold">
+                  Core Engineering Coursework:
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-[11px] text-zinc-300">
+                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
+                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
+                    <span>Data Structures</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-[#C8FF00]/15 text-[#C8FF00] text-[9px] font-bold">
-                    VERIFIED
-                  </span>
+                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
+                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
+                    <span>Algorithm Design</span>
+                  </div>
+                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
+                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
+                    <span>Database Systems</span>
+                  </div>
+                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
+                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
+                    <span>Object-Oriented Design</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Quick Academic Badges */}
-              <div className="mt-3 grid grid-cols-2 gap-2 font-mono text-[11px]">
-                <div className="p-2 rounded bg-black/30 border border-white/5 text-zinc-300 flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-[#C8FF00]" />
-                  <span>MEC • Undergrad CSE</span>
+              {/* Stack Badges */}
+              <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 font-mono text-[11px]">
+                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 text-zinc-300 flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-[#C8FF00]" />
+                  <span>C# / ASP.NET Core</span>
                 </div>
-                <div className="p-2 rounded bg-black/30 border border-white/5 text-zinc-300 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#C8FF00]" />
-                  <span>Bangladesh</span>
+                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 text-zinc-300 flex items-center gap-2">
+                  <Database className="w-4 h-4 text-cyan-400" />
+                  <span>PostgreSQL / EF Core</span>
                 </div>
               </div>
             </div>
 
-            {/* Quick Stat Pill */}
+            {/* Quick Location & Status Tag */}
             <div className="p-4 rounded-xl bg-[#0D1016] border border-white/5 font-mono text-xs text-zinc-400 flex items-center justify-between">
-              <span>PRIMARY LEARNING RADAR:</span>
-              <span className="text-[#C8FF00] font-bold">C# • ASP.NET CORE • AI</span>
+              <span className="flex items-center gap-1.5">
+                <Radio className="w-3.5 h-3.5 text-[#C8FF00] animate-pulse" />
+                <span>LOCATION: MYMENSINGH, BD</span>
+              </span>
+              <span className="text-zinc-500">UTC+6 BST</span>
             </div>
           </div>
 
