@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-interface KhokaCommandBarProps {
+interface CommandBarProps {
   onOpenSchedule: () => void;
   onCopyEmail: () => void;
   copied: boolean;
 }
 
-export const KhokaCommandBar: React.FC<KhokaCommandBarProps> = ({
+export const CommandBar: React.FC<CommandBarProps> = ({
   onOpenSchedule,
   onCopyEmail,
   copied,

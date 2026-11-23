@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const KhokaFooter: React.FC = () => {
+export const FooterBar: React.FC = () => {
   return (
     <footer className="bg-surface/80 backdrop-blur-md py-4 px-6 mt-auto relative z-10 border-t border-outline-variant/40">
       <div className="max-w-[1280px] mx-auto flex justify-center items-center text-center">

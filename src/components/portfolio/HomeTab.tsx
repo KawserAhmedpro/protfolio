@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TabId } from './KhokaSidebar';
+import type { TabId } from './Sidebar';
 import { GithubIcon, LinkedinIcon, FacebookIcon } from '../Icons';
 
 interface HomeTabProps {

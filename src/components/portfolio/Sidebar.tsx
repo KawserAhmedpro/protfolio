@@ -2,7 +2,7 @@ import React from 'react';
 
 export type TabId = 'home' | 'academics' | 'projects' | 'skills' | 'research' | 'journey' | 'contact';
 
-interface KhokaSidebarProps {
+interface SidebarProps {
   currentTab: TabId;
   setCurrentTab: (tab: TabId) => void;
   isOpenMobile: boolean;
@@ -15,7 +15,7 @@ interface KhokaSidebarProps {
   onOpenResume: () => void;
 }
 
-export const KhokaSidebar: React.FC<KhokaSidebarProps> = ({
+export const Sidebar: React.FC<SidebarProps> = ({
   currentTab,
   setCurrentTab,
   isOpenMobile,

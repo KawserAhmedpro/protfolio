@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { KhokaSidebar, type TabId } from './components/khoka/KhokaSidebar';
-import { KhokaMobileNav } from './components/khoka/KhokaMobileNav';
-import { KhokaCommandBar } from './components/khoka/KhokaCommandBar';
-import { HomeTab } from './components/khoka/HomeTab';
-import { AcademicsTab } from './components/khoka/AcademicsTab';
-import { ProjectsTab } from './components/khoka/ProjectsTab';
-import { SkillsTab } from './components/khoka/SkillsTab';
-import { ResearchTab } from './components/khoka/ResearchTab';
-import { JourneyTab } from './components/khoka/JourneyTab';
-import { ContactTab } from './components/khoka/ContactTab';
-import { KhokaFooter } from './components/khoka/KhokaFooter';
-import { ScheduleChatModal } from './components/khoka/ScheduleChatModal';
+import { Sidebar, type TabId } from './components/portfolio/Sidebar';
+import { MobileNav } from './components/portfolio/MobileNav';
+import { CommandBar } from './components/portfolio/CommandBar';
+import { HomeTab } from './components/portfolio/HomeTab';
+import { AcademicsTab } from './components/portfolio/AcademicsTab';
+import { ProjectsTab } from './components/portfolio/ProjectsTab';
+import { SkillsTab } from './components/portfolio/SkillsTab';
+import { ResearchTab } from './components/portfolio/ResearchTab';
+import { JourneyTab } from './components/portfolio/JourneyTab';
+import { ContactTab } from './components/portfolio/ContactTab';
+import { FooterBar } from './components/portfolio/FooterBar';
+import { ScheduleChatModal } from './components/portfolio/ScheduleChatModal';
 import { ResumeModal } from './components/ResumeModal';
 
 export const App: React.FC = () => {
@@ -64,7 +64,7 @@ export const App: React.FC = () => {
       style={{ zoom: zoom !== 100 ? `${zoom}%` : undefined }}
     >
       {/* Mobile Top Navigation */}
-      <KhokaMobileNav
+      <MobileNav
         onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
         theme={theme}
         onToggleTheme={toggleTheme}
@@ -74,7 +74,7 @@ export const App: React.FC = () => {
       />
 
       {/* Fixed Left Sidebar Navigation */}
-      <KhokaSidebar
+      <Sidebar
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
         isOpenMobile={isMobileMenuOpen}
@@ -94,7 +94,7 @@ export const App: React.FC = () => {
         className="flex-grow p-4 sm:p-6 lg:p-12 max-w-[1280px] w-full mx-auto relative z-10"
       >
         {/* Top Command Bar (Desktop only) */}
-        <KhokaCommandBar
+        <CommandBar
           onOpenSchedule={() => setIsScheduleOpen(true)}
           onCopyEmail={handleCopyEmail}
           copied={copiedEmail}
@@ -124,7 +124,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <KhokaFooter />
+      <FooterBar />
 
       {/* Dynamic Schedule Chat Modal */}
       <ScheduleChatModal

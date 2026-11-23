@@ -2,7 +2,7 @@
 
 A bespoke, interactive digital workspace and portfolio for **Kawser Ahmed Ratul (Ratul)**, Computer Science and Engineering undergraduate at **Mymensingh Engineering College (MEC)**, Bangladesh.
 
-Inspired by the high-density creativity, personality, and experimental interfaces of independent creative developer digital spaces (such as [khoka.net](https://khoka.net/)), with a distinctive original visual identity, custom dark obsidian aesthetic, acid-lime telemetry accents, and real interactive systems.
+Inspired by high-density digital spaces, modern minimalism, and interactive personal archives, featuring a distinctive original visual identity, custom dark aesthetic, responsive telemetry HUD, and real interactive systems.
 
 ---
 

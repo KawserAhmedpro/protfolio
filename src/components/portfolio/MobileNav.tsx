@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-interface KhokaMobileNavProps {
+interface MobileNavProps {
   onOpenMobileMenu: () => void;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
@@ -9,7 +9,7 @@ interface KhokaMobileNavProps {
   copied: boolean;
 }
 
-export const KhokaMobileNav: React.FC<KhokaMobileNavProps> = ({
+export const MobileNav: React.FC<MobileNavProps> = ({
   onOpenMobileMenu,
   theme,
   onToggleTheme,
