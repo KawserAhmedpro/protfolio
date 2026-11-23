@@ -13,6 +13,7 @@ export interface ProjectItem {
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
+  linkedInPostUrl?: string;
   isBackendPractice?: boolean;
   metrics?: { label: string; value: string }[];
   highlight: string;
@@ -72,7 +73,7 @@ export const PORTFOLIO_DATA = {
     shortTagline: "Developer in progress. Curious about how things work under the hood.",
     editorialBio: [
       "I am a Computer Science and Engineering undergraduate at Mymensingh Engineering College, Bangladesh. Rather than jumping between surface-level trends, I spend my time getting comfortable with backend systems, understanding database internals, and dissecting how machine learning models actually process information.",
-      "My core engineering focus is on C# and the ASP.NET Core ecosystem — building structured Web APIs, writing clean Entity Framework Core data mappings, and architecting relational schemas in PostgreSQL. When I face everyday frictions in my academic routine, I build real tools like Study Tracker and ResearchMate to solve them.",
+      "My core engineering focus is on C# and the ASP.NET Core ecosystem — building structured Web APIs, writing clean Entity Framework Core data mappings, and architecting relational schemas in PostgreSQL. When I face everyday frictions in student hostel life and academic routines, I build real software like the Dining Management System and ResearchMate to solve them.",
       "I believe the best software engineers are relentless learners with zero ego. I am not a veteran architect or a senior specialist; I am an aspiring engineer who genuinely loves writing clean code, reading academic research papers, and steadily building capability day by day."
     ],
     principles: [
@@ -84,7 +85,7 @@ export const PORTFOLIO_DATA = {
       {
         number: "02",
         title: "Friction-Driven Creation",
-        detail: "The most authentic software is born from real personal need. Both Study Tracker and ResearchMate were coded to organize my own academic life."
+        detail: "The most authentic software is born from real personal and community need. Both the Dining Management System and ResearchMate were coded to organize hostel living and academic research."
       },
       {
         number: "03",
@@ -103,7 +104,7 @@ export const PORTFOLIO_DATA = {
     github: "https://github.com/KawserAhmedpro",
     linkedin: "https://www.linkedin.com/in/kawserahmedratulpro/",
     email: "kawserahmed.ratul@gmail.com",
-    resumeUrl: "#resume-modal", // Configurable link
+    resumeUrl: "#resume-modal",
     academicPortal: "https://mec.ac.bd"
   },
 
@@ -117,34 +118,38 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: "study-tracker",
+      id: "dining-management-system",
       number: "01",
-      title: "Study Tracker",
-      subtitle: "Personal Academic Analytics & Productivity Engine",
-      category: "Productivity Web Application",
-      tagline: "Empirical tracking for CSE coursework, topic progression, and focused study routines.",
-      description: "A focused, client-centric study tracking web application created to eliminate academic guesswork. It provides granular tracking of subjects, active study session timing, daily and cumulative productivity analytics, and long-term history logging.",
-      problem: "As an engineering student managing multiple rigorous courses, I found generic calendar apps lacked context-aware time tracking, topic-level granularity, and insightful historical review of actual focused hours.",
-      solution: "Engineered a responsive, distraction-free web application featuring modular subject/topic hierarchies, an interactive focus timer, structured session persistence, and instant visual metrics comparing planned study targets against actual logged time.",
+      title: "Dining Management System",
+      subtitle: "Web-Based Hostel & Student Mess Dining Digitization Platform",
+      category: "Full-Stack Web Application",
+      tagline: "Simplifying and digitalizing dining operations with automated meal tracking, daily market expense management, and dynamic meal rate calculations.",
+      description: "A comprehensive web-based platform engineered to modernize and digitalize dining operations in student messes and hostels. Built to eliminate manual ledger books, reduce calculation errors, and provide complete transparency across daily member meals, market grocery purchases, manager fees, and individualized billing sheets.",
+      problem: "In student hostels across engineering colleges and universities in Bangladesh, managing shared dining records via manual paper registers regularly causes dispute-heavy meal calculations, lost bazaar receipts, lack of real-time member balance visibility, and chaotic manager handovers.",
+      solution: "Architected a full web application featuring Firebase authentication, member management, flexible daily meal tracking (ON / OFF / DOUBLE states), market expense logging, automatic meal rate calculation (Total Expense / Total Consumed Meals), a public information portal, and an administrative control panel with offline support.",
       features: [
-        "Granular subject and sub-topic hierarchy management",
-        "Active distraction-free focus timer with live duration logging",
-        "Daily, weekly, and cumulative study time analytics and breakdown",
-        "Productivity insights & historical session inspection",
-        "Local state persistence ensuring offline reliability and privacy",
-        "Clean, intuitive UI optimized for extended study hours"
+        "Member Management & Boarder Profile Administration",
+        "Daily Meal Tracking with quick ON / OFF / DOUBLE status toggles",
+        "Market & Expense Management with itemized grocery logs",
+        "Automatic Dynamic Meal Rate Calculation",
+        "Manager Assignment, Rotation & Automated Fee Calculation",
+        "Public Information Portal for dispute-free transparent dining sheets",
+        "Admin Dashboard & Real-Time Operational Overview",
+        "Firebase Authentication for secure role-based access",
+        "Offline Support & Multi-Device Synchronization"
       ],
-      contribution: "Sole designer and developer. Ideated the data schema, created the session management logic, developed the interactive timer, and implemented analytical visualization widgets.",
-      technologies: ["JavaScript (ES6+)", "HTML5 Semantic UI", "Custom CSS3 Architecture", "LocalStorage Engine", "Responsive Design"],
-      liveUrl: "https://kawserahmedpro.github.io/Study_Tracker_webApp_for_personal_use/",
-      githubUrl: "https://github.com/KawserAhmedpro/Study_Tracker_webApp_for_personal_use",
+      contribution: "Sole designer and developer. Conceived the system architecture, implemented Firebase authentication and real-time synchronization, built the dynamic meal-rate formula engine, designed the mobile-first responsive UI, and deployed the production web app.",
+      technologies: ["JavaScript (ES6+)", "Firebase Authentication", "Real-Time Sync", "HTML5 Semantic UI", "Custom CSS3 Architecture", "Financial Ledger Logic", "Responsive Web Design"],
+      liveUrl: "https://kawserahmedpro.github.io/meal_management_system/login",
+      githubUrl: "https://github.com/KawserAhmedpro/meal_management_system",
+      linkedInPostUrl: "https://www.linkedin.com/posts/kawserahmedratulpro_introducing-my-project-dining-management-activity-7530198268576862208-j5w6",
       isBackendPractice: false,
       metrics: [
         { label: "Deployment", value: "GitHub Pages" },
-        { label: "State Engine", value: "Client Storage" },
-        { label: "Design System", value: "Custom Dark HUD" }
+        { label: "Auth Provider", value: "Firebase Auth" },
+        { label: "Architecture", value: "Public Portal + Admin" }
       ],
-      highlight: "Built out of personal necessity to conquer academic course loads with measurable data."
+      highlight: "Directly solves student mess dining accounting with zero manual math errors and complete transparency."
     },
     {
       id: "researchmate",
@@ -378,12 +383,12 @@ export const PORTFOLIO_DATA = {
     },
     {
       year: "Phase 03",
-      phase: "SOLVING PERSONAL FRICTION",
-      title: "Building Study Tracker — The First Real Utility",
-      context: "Web Development & Productivity Engineering",
-      description: "Identified the chaos of tracking multiple engineering subjects. Instead of continuing with spreadsheet hacks, designed and published the Study Tracker web application.",
-      takeaway: "The thrill of using a tool you personally built to organize your daily life changed everything.",
-      tags: ["JavaScript", "UI Design", "Study Tracker", "Utility"]
+      phase: "SOLVING REAL COMMUNITY FRICTION",
+      title: "Building Dining Management System for Student Messes",
+      context: "Full-Stack Web App & Real-Time Financial Ledger",
+      description: "Witnessed the monthly disputes, manual paperwork, and calculation errors of hostel mess dining. Architected and deployed the Dining Management System with Firebase Auth, ON/OFF/DOUBLE meal tracking, market logs, and automated meal-rate calculation.",
+      takeaway: "The immense satisfaction of building software that solves genuine, high-friction problems for your peers in the hall community.",
+      tags: ["Dining System", "Firebase Auth", "Real-Time Ledger", "Mess Tech"]
     },
     {
       year: "Phase 04",
@@ -488,7 +493,6 @@ export const PORTFOLIO_DATA = {
     }
   ] as PersonalInterest[],
 
-  // Simulated ASP.NET Core API Endpoints for the Interactive API Console Simulator
   simulatedApiEndpoints: [
     {
       method: "GET",
@@ -501,7 +505,7 @@ export const PORTFOLIO_DATA = {
         status: "Healthy",
         server: "Kestrel / .NET 8.0 CLR",
         environment: "Production-Simulated",
-        timestamp: "2026-11-23T05:50:00Z",
+        timestamp: "2026-11-23T06:12:00Z",
         database: {
           provider: "Npgsql.EntityFrameworkCore.PostgreSQL",
           connection: "Connected",
@@ -536,11 +540,12 @@ public IActionResult GetHealth()
         totalProjects: 3,
         items: [
           {
-            id: "study-tracker",
-            name: "Study Tracker",
-            category: "Productivity",
-            liveUrl: "https://kawserahmedpro.github.io/Study_Tracker_webApp_for_personal_use/",
-            featuresCount: 6,
+            id: "dining-management-system",
+            name: "Dining Management System",
+            category: "Full-Stack Web App",
+            liveUrl: "https://kawserahmedpro.github.io/meal_management_system/login",
+            postUrl: "https://www.linkedin.com/posts/kawserahmedratulpro_introducing-my-project-dining-management-activity-7530198268576862208-j5w6",
+            featuresCount: 9,
             status: "Active"
           },
           {

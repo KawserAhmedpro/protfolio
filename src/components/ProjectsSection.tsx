@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Terminal, ArrowUpRight, Play, Pause, RotateCcw } from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { CheckCircle2, Terminal, ArrowUpRight, Calculator, Plus, Minus } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './Icons';
 import { sound } from '../utils/sound';
 
 interface ProjectsSectionProps {
@@ -8,29 +8,19 @@ interface ProjectsSectionProps {
 }
 
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimulator }) => {
-  // Mini interactive focus timer for Study Tracker card preview
-  const [timerSeconds, setTimerSeconds] = useState(1500); // 25 min default
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const activeCourse = 'CSE-301: Distributed Systems';
+  // Interactive Mess Dining & Meal-Rate Simulator for Project 01
+  const [totalMarketExpense, setTotalMarketExpense] = useState(8400); // ৳8,400
+  const [totalMessMeals, setTotalMessMeals] = useState(140); // 140 total meals
+  const [boarderMealState, setBoarderMealState] = useState<'ON' | 'OFF' | 'DOUBLE'>('DOUBLE');
+  const boarderBaseMeals = 24;
+  const boarderDeposit = 2000; // ৳2,000
 
-  // Study timer effect
-  React.useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | null = null;
-    if (isTimerRunning) {
-      interval = setInterval(() => {
-        setTimerSeconds((prev) => (prev > 0 ? prev - 1 : 1500));
-      }, 1000);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isTimerRunning]);
-
-  const formatTimer = (sec: number) => {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  };
+  // Calculate live meal multiplier
+  const multiplier = boarderMealState === 'DOUBLE' ? 2 : boarderMealState === 'ON' ? 1 : 0;
+  const boarderActualMeals = boarderBaseMeals + (multiplier - 1);
+  const liveMealRate = totalMessMeals > 0 ? totalMarketExpense / totalMessMeals : 0;
+  const boarderTotalCost = boarderActualMeals * liveMealRate;
+  const balance = boarderDeposit - boarderTotalCost;
 
   return (
     <section id="projects" className="relative py-28 px-4 sm:px-6 bg-[#0B0D12] border-t border-white/5">
@@ -48,13 +38,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
             </h2>
           </div>
           <div className="font-mono text-xs text-zinc-500 max-w-sm sm:text-right">
-            Real tools designed to resolve personal friction in academic research & backend engineering.
+            Real tools designed to resolve personal friction in student dining operations & academic research.
           </div>
         </div>
 
         {/* Case Study Cards */}
         <div className="space-y-16">
-          {/* PROJECT 01: STUDY TRACKER */}
+          {/* PROJECT 01: DINING MANAGEMENT SYSTEM */}
           <div className="rounded-2xl bg-[#0F1218] border border-white/10 overflow-hidden shadow-2xl transition-all hover:border-[#C8FF00]/40 group">
             {/* Project Top HUD Bar */}
             <div className="flex flex-wrap items-center justify-between px-6 py-3.5 bg-[#141720] border-b border-white/10 gap-3 font-mono text-xs">
@@ -62,33 +52,33 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
                 <span className="px-2 py-0.5 rounded bg-[#C8FF00]/15 text-[#C8FF00] font-bold">
                   PROJECT 01
                 </span>
-                <span className="text-zinc-400 font-semibold">STUDY TRACKER // WEB APP</span>
+                <span className="text-zinc-400 font-semibold">DINING MANAGEMENT SYSTEM // WEB APP</span>
               </div>
               <div className="flex items-center gap-4 text-zinc-500 text-[11px]">
-                <span>CATEGORY: ACADEMIC ANALYTICS</span>
+                <span>CATEGORY: FULL-STACK WEB APP</span>
                 <span className="hidden sm:inline">•</span>
                 <span className="hidden sm:inline text-emerald-400">DEPLOYED ON GITHUB PAGES</span>
               </div>
             </div>
 
             <div className="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column: Case Study Narrative */}
+              {/* Left Column: Narrative */}
               <div className="lg:col-span-7 space-y-6">
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black font-heading text-white group-hover:text-[#C8FF00] transition-colors">
-                    Study Tracker
+                    Dining Management System
                   </h3>
                   <p className="text-zinc-400 font-mono text-xs mt-1">
-                    Personal Academic Analytics & Productivity Engine
+                    Web-Based Hostel & Student Mess Dining Digitization Platform
                   </p>
                 </div>
 
                 <div className="space-y-3 text-sm text-zinc-300 font-sans leading-relaxed">
                   <p>
-                    <strong className="text-white">Problem:</strong> As a Computer Science undergraduate balancing algorithmic coursework, math, and software architecture, traditional generic to-do apps gave zero visibility into actual deep-work hours spent per topic.
+                    <strong className="text-white">Problem:</strong> In student hostels and messes across Bangladesh, maintaining physical paper registers leads to dispute-heavy meal rate math, misplaced grocery bazaar receipts, chaotic manager transitions, and lack of individual balance clarity.
                   </p>
                   <p>
-                    <strong className="text-white">Solution:</strong> Designed and built a lightweight web application that enables granular topic breakdowns, live focus timing, daily and weekly study analytics, and historical performance tracking.
+                    <strong className="text-white">Solution:</strong> Architected a web-based platform with Firebase authentication, flexible daily meal state tracking (ON / OFF / DOUBLE), grocery expense logging, automatic live meal rate calculation, and a transparent public information portal.
                   </p>
                 </div>
 
@@ -100,34 +90,34 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-300 font-sans">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Subject & Topic Hierarchy</span>
+                      <span>Member Profile Management</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Interactive Focus Timer</span>
+                      <span>Daily Meal Tracking (ON / OFF / DOUBLE)</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Daily Study Metrics & Charts</span>
+                      <span>Market & Expense Ledger</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Historical Session Logs</span>
+                      <span>Automatic Dynamic Meal Rate</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Persistent Local State</span>
+                      <span>Public Transparent Info Portal</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#C8FF00] shrink-0" />
-                      <span>Distraction-Free UI</span>
+                      <span>Firebase Authentication & Admin Dash</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Tech Pills */}
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {['JavaScript (ES6+)', 'HTML5 Semantic UI', 'CSS3 Architecture', 'LocalStorage', 'Client-side Charts'].map((t) => (
+                  {['JavaScript (ES6+)', 'Firebase Authentication', 'Real-Time Sync', 'HTML5 / CSS3', 'Financial Ledger Logic', 'Responsive Mobile-First'].map((t) => (
                     <span key={t} className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-[11px] text-zinc-300">
                       {t}
                     </span>
@@ -137,7 +127,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
                 {/* Actions */}
                 <div className="pt-4 flex flex-wrap items-center gap-3">
                   <a
-                    href="https://kawserahmedpro.github.io/Study_Tracker_webApp_for_personal_use/"
+                    href="https://kawserahmedpro.github.io/meal_management_system/login"
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => sound.playClick()}
@@ -149,7 +139,19 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
                   </a>
 
                   <a
-                    href="https://github.com/KawserAhmedpro/Study_Tracker_webApp_for_personal_use"
+                    href="https://www.linkedin.com/posts/kawserahmedratulpro_introducing-my-project-dining-management-activity-7530198268576862208-j5w6"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => sound.playClick()}
+                    data-cursor="POST"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 font-mono text-xs transition-all"
+                  >
+                    <LinkedinIcon className="w-4 h-4 text-blue-400" />
+                    <span>LinkedIn Showcase Post ↗</span>
+                  </a>
+
+                  <a
+                    href="https://github.com/KawserAhmedpro/meal_management_system"
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => sound.playClick()}
@@ -162,67 +164,120 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenApiSimul
                 </div>
               </div>
 
-              {/* Right Column: Interactive Mini Preview Simulator */}
+              {/* Right Column: Interactive Dining & Meal-Rate Ledger Simulator */}
               <div className="lg:col-span-5 p-5 rounded-xl bg-black/50 border border-white/10 flex flex-col justify-between font-mono">
                 <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs">
-                  <span className="text-zinc-400 font-bold">SESSION SIMULATOR</span>
-                  <span className="text-[10px] text-[#C8FF00]">ACTIVE COMPONENT</span>
+                  <span className="text-zinc-400 font-bold flex items-center gap-1.5">
+                    <Calculator className="w-3.5 h-3.5 text-[#C8FF00]" />
+                    <span>MEAL-RATE ENGINE SIMULATOR</span>
+                  </span>
+                  <span className="text-[10px] text-[#C8FF00]">LIVE FORMULA</span>
                 </div>
 
-                {/* Focus Timer Demonstration */}
-                <div className="my-6 text-center space-y-4">
-                  <div className="text-xs text-zinc-400">Current Course Focus:</div>
-                  <div className="px-3 py-1.5 rounded-md bg-white/5 text-zinc-200 text-xs font-semibold inline-block border border-white/10">
-                    {activeCourse}
+                {/* Interactive calculation controls */}
+                <div className="my-4 space-y-3 text-xs">
+                  {/* Today's Meal State Toggle */}
+                  <div className="space-y-1.5">
+                    <div className="text-[11px] text-zinc-400">Boarder Meal State (Today):</div>
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {(['OFF', 'ON', 'DOUBLE'] as const).map((st) => (
+                        <button
+                          key={st}
+                          onClick={() => {
+                            sound.playClick();
+                            setBoarderMealState(st);
+                          }}
+                          className={`py-1.5 rounded text-[11px] font-bold border transition-all cursor-pointer ${
+                            boarderMealState === st
+                              ? 'bg-[#C8FF00] text-black border-[#C8FF00]'
+                              : 'bg-white/5 border-white/10 text-zinc-400 hover:text-white'
+                          }`}
+                        >
+                          {st === 'OFF' ? 'OFF (0)' : st === 'ON' ? 'ON (1)' : 'DOUBLE (2)'}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="text-5xl font-black font-mono tracking-wider text-white py-2">
-                    {formatTimer(timerSeconds)}
+                  {/* Market Expense adjustor */}
+                  <div className="p-2.5 rounded-lg bg-[#141822] border border-white/10 flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] text-zinc-500">TOTAL BAZAAR EXPENSE</div>
+                      <div className="text-white font-bold text-sm">৳{totalMarketExpense.toLocaleString()}</div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setTotalMarketExpense((prev) => Math.max(1000, prev - 500));
+                        }}
+                        className="p-1 rounded bg-white/5 hover:bg-white/10 text-zinc-300 cursor-pointer"
+                        title="-৳500"
+                      >
+                        <Minus className="w-3 h-3" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setTotalMarketExpense((prev) => prev + 500);
+                        }}
+                        className="p-1 rounded bg-white/5 hover:bg-white/10 text-zinc-300 cursor-pointer"
+                        title="+৳500"
+                      >
+                        <Plus className="w-3 h-3" />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => {
-                        sound.playClick();
-                        setIsTimerRunning(!isTimerRunning);
-                      }}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs uppercase transition-all cursor-pointer ${
-                        isTimerRunning
-                          ? 'bg-amber-400 hover:bg-amber-500 text-black'
-                          : 'bg-[#C8FF00] hover:bg-[#b5e600] text-black'
-                      }`}
-                    >
-                      {isTimerRunning ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-                      <span>{isTimerRunning ? 'Pause' : 'Start Focus'}</span>
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        sound.playClick();
-                        setIsTimerRunning(false);
-                        setTimerSeconds(1500);
-                      }}
-                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/10 transition-colors cursor-pointer"
-                      title="Reset Session"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5" />
-                    </button>
+                  {/* Total Mess Meals adjustor */}
+                  <div className="p-2.5 rounded-lg bg-[#141822] border border-white/10 flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] text-zinc-500">TOTAL MESS MEALS CONSUMED</div>
+                      <div className="text-white font-bold text-sm">{totalMessMeals} Meals</div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setTotalMessMeals((prev) => Math.max(20, prev - 10));
+                        }}
+                        className="p-1 rounded bg-white/5 hover:bg-white/10 text-zinc-300 cursor-pointer"
+                        title="-10 meals"
+                      >
+                        <Minus className="w-3 h-3" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          sound.playClick();
+                          setTotalMessMeals((prev) => prev + 10);
+                        }}
+                        className="p-1 rounded bg-white/5 hover:bg-white/10 text-zinc-300 cursor-pointer"
+                        title="+10 meals"
+                      >
+                        <Plus className="w-3 h-3" />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                {/* Simulated Stat Strip */}
-                <div className="pt-3 border-t border-white/10 grid grid-cols-3 gap-2 text-center text-[10px]">
-                  <div className="p-2 rounded bg-white/5">
-                    <div className="text-zinc-500">TODAY</div>
-                    <div className="text-white font-bold text-xs mt-0.5">4.2 hrs</div>
+                {/* Computed Output Strip */}
+                <div className="pt-3 border-t border-white/10 space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-zinc-400">Current Computed Meal Rate:</span>
+                    <span className="text-[#C8FF00] font-bold text-sm">৳{liveMealRate.toFixed(2)} / meal</span>
                   </div>
-                  <div className="p-2 rounded bg-white/5">
-                    <div className="text-zinc-500">STREAK</div>
-                    <div className="text-[#C8FF00] font-bold text-xs mt-0.5">18 Days</div>
-                  </div>
-                  <div className="p-2 rounded bg-white/5">
-                    <div className="text-zinc-500">SESSIONS</div>
-                    <div className="text-white font-bold text-xs mt-0.5">7 Logged</div>
+
+                  <div className="grid grid-cols-2 gap-2 text-[10px] pt-1">
+                    <div className="p-2 rounded bg-white/5">
+                      <div className="text-zinc-500">MEMBER TOTAL BILL</div>
+                      <div className="text-white font-bold text-xs mt-0.5">৳{boarderTotalCost.toFixed(2)}</div>
+                    </div>
+                    <div className="p-2 rounded bg-white/5">
+                      <div className="text-zinc-500">MEMBER BALANCE</div>
+                      <div className={`font-bold text-xs mt-0.5 ${balance >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {balance >= 0 ? `+৳${balance.toFixed(2)} (Safe)` : `-৳${Math.abs(balance).toFixed(2)} (Due)`}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

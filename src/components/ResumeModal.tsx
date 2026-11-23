@@ -40,7 +40,7 @@ LinkedIn: ${PORTFOLIO_DATA.socialLinks.linkedin}
   Department of Computer Science & Engineering (Undergraduate)
 
 ## Projects
-- Study Tracker (Web App): https://kawserahmedpro.github.io/Study_Tracker_webApp_for_personal_use/
+- Dining Management System (Web App): https://kawserahmedpro.github.io/meal_management_system/login
 - ResearchMate (Academic Literature Workspace): https://kawserahmedpro.github.io/ReasearchMate/
 - ASP.NET Core Backend Practice (Web APIs, EF Core, PostgreSQL)`;
 
@@ -181,14 +181,14 @@ LinkedIn: ${PORTFOLIO_DATA.socialLinks.linkedin}
             <div className="space-y-3 text-xs">
               <div className="p-4 rounded-xl bg-black/30 border border-white/5 print:bg-transparent print:border-none print:p-0">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white print:text-black">
-                  <span>Study Tracker — Academic Analytics Web Application</span>
+                  <span>Dining Management System — Hostel & Mess Digitization</span>
                   <span className="font-mono text-[11px] text-emerald-400 print:text-black">Live Project</span>
                 </div>
                 <p className="text-zinc-400 print:text-black mt-1 leading-relaxed">
-                  Personal productivity tool built to manage CSE subjects, topics, and study sessions. Implements an active focus timer, daily productivity metrics, and historical progress analytics with persistent local state.
+                  Web-based platform modernizing student dining in halls and hostels. Includes Firebase authentication, member profiles, ON/OFF/DOUBLE meal state toggles, grocery expense ledger, dynamic meal rate calculation, and a transparent public portal.
                 </p>
                 <div className="mt-2 text-[11px] font-mono text-zinc-500 print:text-black">
-                  Tech: JavaScript (ES6+), HTML5, CSS3, LocalStorage Engine
+                  Tech: JavaScript (ES6+), Firebase Auth, Real-Time Sync, HTML5, CSS3
                 </div>
               </div>
 

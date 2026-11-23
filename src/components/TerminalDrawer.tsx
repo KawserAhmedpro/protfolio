@@ -53,7 +53,6 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
 
-  // Global toggle for ` or ~
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === '`' && !['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
@@ -117,8 +116,13 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
               <span className="text-white font-bold">{p.number} // {p.title}</span>
               <p className="text-zinc-400">{p.tagline}</p>
               {p.liveUrl && (
-                <a href={p.liveUrl} target="_blank" rel="noreferrer" className="text-cyan-400 underline mr-3">
-                  Live Demo ↗
+                <a href={p.liveUrl} target="_blank" rel="noreferrer" className="text-[#C8FF00] underline mr-3">
+                  Live App ↗
+                </a>
+              )}
+              {p.linkedInPostUrl && (
+                <a href={p.linkedInPostUrl} target="_blank" rel="noreferrer" className="text-blue-400 underline mr-3">
+                  LinkedIn Showcase ↗
                 </a>
               )}
               {p.githubUrl && (
@@ -257,14 +261,14 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onOpenApiSimulator}
-            className="flex items-center gap-1 px-2 py-0.5 rounded bg-[#C8FF00]/10 border border-[#C8FF00]/30 text-[#C8FF00] hover:bg-[#C8FF00]/20 text-[10px] transition-colors"
+            className="flex items-center gap-1 px-2 py-0.5 rounded bg-[#C8FF00]/10 border border-[#C8FF00]/30 text-[#C8FF00] hover:bg-[#C8FF00]/20 text-[10px] transition-colors cursor-pointer"
           >
             <Sparkles className="w-3 h-3" />
             <span>Open API UI</span>
           </button>
           <button
             onClick={onClose}
-            className="p-1 rounded text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1 rounded text-zinc-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -294,12 +298,12 @@ export const TerminalDrawer: React.FC<TerminalDrawerProps> = ({
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          placeholder="type command (e.g. 'help', 'whoami', 'curl /api/v1/health')..."
+          placeholder="type command (e.g. 'help', 'whoami', 'projects', 'curl /api/v1/health')..."
           className="flex-1 bg-transparent text-xs text-white placeholder-zinc-600 focus:outline-none font-mono"
         />
         <button
           type="submit"
-          className="p-1.5 rounded bg-white/5 hover:bg-[#C8FF00]/20 text-zinc-400 hover:text-[#C8FF00] transition-colors"
+          className="p-1.5 rounded bg-white/5 hover:bg-[#C8FF00]/20 text-zinc-400 hover:text-[#C8FF00] transition-colors cursor-pointer"
         >
           <CornerDownLeft className="w-3.5 h-3.5" />
         </button>

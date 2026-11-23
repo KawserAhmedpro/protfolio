@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, ArrowRight, CornerDownLeft, X, Code, ExternalLink, Terminal, Volume2, Copy, Check, FileText } from 'lucide-react';
+import { LinkedinIcon } from './Icons';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { sound } from '../utils/sound';
 
@@ -32,7 +33,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const [copiedEmail, setCopiedEmail] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Focus input when modal opens
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
@@ -41,7 +41,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     }
   }, [isOpen]);
 
-  // Global keyboard shortcuts (Cmd+K, Ctrl+K, Escape)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -99,7 +98,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       id: 'nav-projects',
       category: 'Navigation',
       title: '03 — Inspect Case Studies & Projects',
-      subtitle: 'Study Tracker, ResearchMate, ASP.NET Core APIs',
+      subtitle: 'Dining Management System, ResearchMate, ASP.NET Core APIs',
       icon: <ArrowRight className="w-4 h-4 text-[#C8FF00]" />,
       action: () => scrollTo('projects'),
     },
@@ -138,13 +137,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
     // Projects Direct
     {
-      id: 'proj-study',
+      id: 'proj-dining',
       category: 'Projects',
-      title: 'Open Study Tracker (Live Web App)',
-      subtitle: 'Personal academic analytics & focus tracking',
-      icon: <ExternalLink className="w-4 h-4 text-emerald-400" />,
+      title: 'Open Dining Management System (Live Web App)',
+      subtitle: 'Hostel & mess meal calculation, grocery logs & Firebase auth',
+      icon: <ExternalLink className="w-4 h-4 text-[#C8FF00]" />,
       action: () => {
         window.open(PORTFOLIO_DATA.projects[0].liveUrl, '_blank');
+        onClose();
+      },
+    },
+    {
+      id: 'proj-dining-linkedin',
+      category: 'Projects',
+      title: 'View Dining Management System Showcase on LinkedIn',
+      subtitle: 'Feature walkthrough video and project overview post',
+      icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
+      action: () => {
+        window.open(PORTFOLIO_DATA.projects[0].linkedInPostUrl, '_blank');
         onClose();
       },
     },
@@ -286,7 +296,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Type a command, project, or section name... (e.g. 'resume', 'c#', 'contact')"
+            placeholder="Type a command, project, or section name... (e.g. 'dining', 'resume', 'contact')"
             className="flex-1 bg-transparent text-sm sm:text-base text-white placeholder-zinc-500 focus:outline-none font-sans"
           />
           {query && (

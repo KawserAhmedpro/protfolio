@@ -25,8 +25,11 @@ Inspired by the high-density creativity, personality, and experimental interface
 - **Global Command Palette (`⌘K` / `Ctrl+K`)**:
   - Instant fuzzy search across sections, projects, quick email copy, sound toggle, and CV inspection.
 - **Interactive Project Case Studies**:
-  - **Study Tracker**: Personal academic analytics app with live interactive focus timer simulation.
+  - **Dining Management System**: Full-stack web app with Firebase Authentication, daily ON/OFF/DOUBLE meal tracking, market grocery ledger, dynamic meal rate formula, and public information portal. Includes an interactive live meal-rate calculator on the card.
+    - [Live Web App](https://kawserahmedpro.github.io/meal_management_system/login)
+    - [LinkedIn Showcase Post](https://www.linkedin.com/posts/kawserahmedratulpro_introducing-my-project-dining-management-activity-7530198268576862208-j5w6)
   - **ResearchMate**: Academic literature management and paper workspace with split-view PDF reader preview.
+    - [Live Web App](https://kawserahmedpro.github.io/ReasearchMate/)
   - **ASP.NET Core Web API Practice**: Layered architecture, EF Core migrations, PostgreSQL integration, and JWT auth.
 - **Academic & Engineering Journey Chronicle**:
   - Chronological milestones from MEC CSE admission to systems engineering and machine learning exploration.
