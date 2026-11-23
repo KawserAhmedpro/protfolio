@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Copy, Check, ArrowUpRight, Send } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, FacebookIcon } from './Icons';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { sound } from '../utils/sound';
 
@@ -91,42 +91,62 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Channels */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {/* GitHub */}
-              <a
-                href={PORTFOLIO_DATA.socialLinks.github}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => sound.playClick()}
-                className="p-4 rounded-xl bg-[#0D1016] border border-white/5 hover:border-[#C8FF00]/40 transition-all flex items-center justify-between group"
-              >
-                <div className="flex items-center gap-3">
-                  <GithubIcon className="w-5 h-5 text-zinc-400 group-hover:text-white" />
-                  <div>
-                    <div className="text-xs font-bold text-white font-mono">GitHub</div>
-                    <div className="text-[10px] text-zinc-500 font-mono">@KawserAhmedpro</div>
+            {/* Social Channels (GitHub, LinkedIn, Facebook) */}
+            <div className="space-y-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {/* GitHub */}
+                <a
+                  href={PORTFOLIO_DATA.socialLinks.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => sound.playClick()}
+                  className="p-3.5 rounded-xl bg-[#0D1016] border border-white/5 hover:border-[#C8FF00]/40 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <GithubIcon className="w-4 h-4 text-zinc-400 group-hover:text-white shrink-0" />
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white font-mono truncate">GitHub</div>
+                      <div className="text-[10px] text-zinc-500 font-mono truncate">@KawserAhmedpro</div>
+                    </div>
                   </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:text-[#C8FF00] transition-colors" />
-              </a>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-[#C8FF00] transition-colors shrink-0" />
+                </a>
 
-              {/* LinkedIn */}
+                {/* LinkedIn */}
+                <a
+                  href={PORTFOLIO_DATA.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => sound.playClick()}
+                  className="p-3.5 rounded-xl bg-[#0D1016] border border-white/5 hover:border-cyan-400/40 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <LinkedinIcon className="w-4 h-4 text-zinc-400 group-hover:text-cyan-400 shrink-0" />
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white font-mono truncate">LinkedIn</div>
+                      <div className="text-[10px] text-zinc-500 font-mono truncate">kawserahmedratulpro</div>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-cyan-400 transition-colors shrink-0" />
+                </a>
+              </div>
+
+              {/* Facebook */}
               <a
-                href={PORTFOLIO_DATA.socialLinks.linkedin}
+                href={PORTFOLIO_DATA.socialLinks.facebook}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => sound.playClick()}
-                className="p-4 rounded-xl bg-[#0D1016] border border-white/5 hover:border-cyan-400/40 transition-all flex items-center justify-between group"
+                className="p-3.5 rounded-xl bg-[#0D1016] border border-white/5 hover:border-blue-400/40 transition-all flex items-center justify-between group"
               >
-                <div className="flex items-center gap-3">
-                  <LinkedinIcon className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400" />
-                  <div>
-                    <div className="text-xs font-bold text-white font-mono">LinkedIn</div>
-                    <div className="text-[10px] text-zinc-500 font-mono">kawserahmedratulpro</div>
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <FacebookIcon className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 shrink-0" />
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-white font-mono truncate">Facebook</div>
+                    <div className="text-[10px] text-zinc-500 font-mono truncate">facebook.com/kawserahmedpro</div>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-zinc-600 group-hover:text-cyan-400 transition-colors" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-blue-400 transition-colors shrink-0" />
               </a>
             </div>
 

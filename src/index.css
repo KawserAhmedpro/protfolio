@@ -1,117 +1,269 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+@theme {
+  --color-surface: var(--surface-color);
+  --color-surface-container: var(--surface-container-color);
+  --color-surface-container-lowest: var(--surface-container-lowest-color);
+  --color-background: var(--bg-color);
+  --color-on-surface: var(--on-surface-color);
+  --color-on-surface-variant: var(--on-surface-variant-color);
+  --color-outline-variant: var(--outline-variant-color);
+  --color-primary-container: var(--primary-container-color);
+  --color-primary-fixed-dim: var(--primary-fixed-dim-color);
+  --color-tertiary-container: var(--tertiary-container-color);
 
-    --bg-root: #090a0e;
-    --bg-surface: #0f1218;
-    --bg-card: #131720;
-    --bg-card-hover: #181d29;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-medium: rgba(255, 255, 255, 0.14);
-    --border-accent: rgba(200, 255, 0, 0.35);
+  --font-h1: 'Lora', Georgia, serif;
+  --font-h2: 'Lora', Georgia, serif;
+  --font-body-md: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body-lg: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono-label: 'JetBrains Mono', ui-monospace, monospace;
+  --font-code-block: 'JetBrains Mono', ui-monospace, monospace;
+}
 
-    --accent-lime: #c8ff00;
-    --accent-lime-dim: rgba(200, 255, 0, 0.1);
-    --accent-lime-glow: rgba(200, 255, 0, 0.25);
+/* ==========================================================================
+   Khoka Design System Variables
+   ========================================================================== */
 
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --text-muted: #64748b;
-  }
+:root {
+  --bg-color: #f7f8fa;
+  --surface-color: #ffffff;
+  --on-surface-color: #20252c;
+  --on-surface-variant-color: #58616c;
+  --outline-variant-color: #dce1e6;
+  --surface-container-color: #eef1f4;
+  --surface-container-lowest-color: #ffffff;
+  
+  --primary-container-color: #0284c7;
+  --primary-fixed-dim-color: #0369a1;
+  --tertiary-container-color: #0f766e;
 
-  body {
-    font-family: var(--font-body);
-    background-color: var(--bg-root);
-    color: var(--text-primary);
-  }
+  --primary-accent: #0284c7;
+  --primary-accent-hover: #0369a1;
+  --primary-accent-bg: rgba(2, 132, 199, 0.08);
+  --primary-accent-border: rgba(2, 132, 199, 0.25);
+  
+  --secondary-accent: #0f766e;
+  --secondary-accent-bg: rgba(15, 118, 110, 0.08);
+  
+  --tertiary-accent: #d97706;
+  --tertiary-accent-bg: rgba(217, 119, 6, 0.08);
+  
+  --error-color: #e11d48;
+  --error-bg: rgba(225, 29, 72, 0.08);
 
-  h1, h2, h3, h4, .font-heading {
-    font-family: var(--font-heading);
-    letter-spacing: -0.025em;
-  }
+  --border-color: #dce1e6;
+  --glass-bg: rgba(248, 251, 255, 0.9);
+  --shadow-color: rgba(2, 132, 199, 0.08);
+  --hover-border: #b8c8e5;
+  --hover-shadow: rgba(2, 132, 199, 0.12);
+  --scrollbar-track: #f8fbff;
+  --scrollbar-thumb: #cbd5e1;
+}
 
-  code, pre, .font-mono {
-    font-family: var(--font-mono);
-  }
+.dark {
+  --bg-color: #141618;
+  --surface-color: #1c1f22;
+  --on-surface-color: #f8fafc;
+  --on-surface-variant-color: #adb5bf;
+  --outline-variant-color: #353b42;
+  --surface-container-color: #252a30;
+  --surface-container-lowest-color: #101214;
+  
+  --primary-container-color: #38bdf8;
+  --primary-fixed-dim-color: #0284c7;
+  --tertiary-container-color: #2dd4bf;
 
-  /* Custom subtle scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  --primary-accent: #38bdf8;
+  --primary-accent-hover: #60a5fa;
+  --primary-accent-bg: rgba(56, 189, 248, 0.12);
+  --primary-accent-border: rgba(56, 189, 248, 0.3);
+  
+  --secondary-accent: #2dd4bf;
+  --secondary-accent-bg: rgba(45, 212, 191, 0.12);
+  
+  --tertiary-accent: #fbbf24;
+  --tertiary-accent-bg: rgba(251, 191, 36, 0.12);
+  
+  --error-color: #fb7185;
+  --error-bg: rgba(251, 113, 133, 0.14);
+
+  --border-color: #353b42;
+  --glass-bg: rgba(28, 31, 34, 0.96);
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --hover-border: #2e437b;
+  --hover-shadow: rgba(0, 0, 0, 0.2);
+  --scrollbar-track: #141618;
+  --scrollbar-thumb: #454c55;
+}
+
+/* ==========================================================================
+   Typography Classes
+   ========================================================================== */
+
+.font-h1, .font-h2 {
+  font-family: 'Lora', Georgia, serif;
+}
+
+.font-body-md, .font-body-lg {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-label, .font-code-block {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--on-surface-color);
+  min-height: 100vh;
+}
+
+.premium-grid {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle, var(--outline-variant-color) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* ==========================================================================
+   Navigation Items
+   ========================================================================== */
+
+.nav-item {
+  margin: 0.05rem 0.5rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 0.5rem !important;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--on-surface-variant-color);
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background-color: var(--surface-container-color);
+  color: var(--primary-container-color);
+}
+
+.nav-item.active {
+  background: var(--primary-accent-bg) !important;
+  color: var(--primary-container-color) !important;
+  border-color: var(--primary-accent-border) !important;
+  font-weight: 700;
+  box-shadow: none !important;
+}
+
+.nav-item.active span.material-symbols-outlined {
+  color: var(--primary-container-color);
+}
+
+/* ==========================================================================
+   Profile Layout & Two Column Grid
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  .profile-layout {
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.7fr) !important;
   }
-  ::-webkit-scrollbar-track {
-    background: #090a0e;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #242a38;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #3b445a;
+  .profile-sidebar {
+    max-width: 320px;
   }
 }
 
-/* Subtle architectural dot grid background */
-.bg-grid-subtle {
-  background-size: 32px 32px;
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+/* ==========================================================================
+   Glass Card
+   ========================================================================== */
+
+.glass-card {
+  background: var(--surface-color);
+  border: 1px solid var(--outline-variant-color);
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.bg-grid-dense {
-  background-size: 16px 16px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+.glass-card:hover {
+  border-color: var(--hover-border);
+  box-shadow: 0 4px 16px var(--hover-shadow);
 }
 
-/* Glass panel */
-.glass-panel {
-  background: rgba(15, 18, 24, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* ==========================================================================
+   Markdown Typography & Contrast
+   ========================================================================== */
+
+.markdown-content p {
+  margin-bottom: 0.85em;
+  line-height: 1.75;
 }
 
-.glass-panel-elevated {
-  background: rgba(20, 24, 34, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.markdown-content strong,
+.markdown-content b {
+  font-weight: 700;
+  color: var(--on-surface-color);
 }
 
-/* Glow effects */
-.glow-accent {
-  box-shadow: 0 0 30px -5px rgba(200, 255, 0, 0.18);
+.markdown-content h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Lora', serif;
+  color: var(--on-surface-color);
+  margin-bottom: 0.75rem;
 }
 
-.glow-accent-sm {
-  box-shadow: 0 0 15px -3px rgba(200, 255, 0, 0.25);
+.markdown-content code {
+  background-color: var(--surface-container-color);
+  border: 1px solid var(--outline-variant-color);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.375rem;
+  font-size: 0.85em;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary-container-color);
 }
 
-/* Text stroke utility */
-.text-stroke {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-  color: transparent;
+/* ==========================================================================
+   Scrollbar & Selection
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-.text-stroke-hover:hover {
-  -webkit-text-stroke: 1px #c8ff00;
-  color: transparent;
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
 }
 
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-delay: -1ms !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    background-attachment: initial !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0s !important;
-    transition-delay: 0s !important;
-  }
+::selection {
+  background-color: var(--primary-accent-bg);
+  color: var(--primary-container-color);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

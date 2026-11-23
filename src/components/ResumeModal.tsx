@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Printer, Copy, Check, GraduationCap, Code2, Database, Mail, MapPin } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, FacebookIcon } from './Icons';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { sound } from '../utils/sound';
 
@@ -27,6 +27,23 @@ Location: ${PORTFOLIO_DATA.personal.locationCity}, Bangladesh
 Email: ${PORTFOLIO_DATA.socialLinks.email}
 GitHub: ${PORTFOLIO_DATA.socialLinks.github}
 LinkedIn: ${PORTFOLIO_DATA.socialLinks.linkedin}
+Facebook: ${PORTFOLIO_DATA.socialLinks.facebook}
+
+## Academic Background
+- B.Sc. in Computer Science & Engineering (Undergraduate, Ongoing)
+  Mymensingh Engineering College (MEC) (Affiliated with University of Dhaka)
+
+- Higher Secondary Certificate (HSC) — GPA 5.00 / 5.00
+  Hajiganj Degree College, Cumilla Board
+
+- Secondary School Certificate (SSC) — GPA 5.00 / 5.00
+  Waruk Rahmania High School, Cumilla Board
+
+- Junior School Certificate (JSC) — GPA 5.00 / 5.00
+  Waruk Rahmania High School, Cumilla Board
+
+- Primary School Certificate (PSC) — GPA 5.00 / 5.00
+  Waruk Govt Primary School, Cumilla Board
 
 ## Technical Focus
 - Core Languages: C#, C++, Python
@@ -35,12 +52,8 @@ LinkedIn: ${PORTFOLIO_DATA.socialLinks.linkedin}
 - Tools: Git, GitHub, Visual Studio, VS Code, Postman
 - Exploring: Machine Learning, Transformers, Software Architecture
 
-## Academic Background
-- Mymensingh Engineering College (MEC)
-  Department of Computer Science & Engineering (Undergraduate)
-
 ## Projects
-- Dining Management System (Web App): https://kawserahmedpro.github.io/meal_management_system/login
+- Dining Management System: https://kawserahmedpro.github.io/meal_management_system/login
 - ResearchMate (Academic Literature Workspace): https://kawserahmedpro.github.io/ReasearchMate/
 - ASP.NET Core Backend Practice (Web APIs, EF Core, PostgreSQL)`;
 
@@ -122,26 +135,43 @@ LinkedIn: ${PORTFOLIO_DATA.socialLinks.linkedin}
                 <LinkedinIcon className="w-3.5 h-3.5 text-zinc-500 print:hidden" />
                 linkedin.com/in/kawserahmedratulpro
               </span>
+              <span className="flex items-center gap-1">
+                <FacebookIcon className="w-3.5 h-3.5 text-zinc-500 print:hidden" />
+                facebook.com/kawserahmedpro
+              </span>
             </div>
           </div>
 
-          {/* Education */}
+          {/* Complete Academic Background */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#C8FF00] print:text-black uppercase tracking-wider">
               <GraduationCap className="w-4 h-4 print:hidden" />
-              <span>Academic Background</span>
+              <span>Academic Track Record</span>
             </div>
-            <div className="p-4 rounded-xl bg-black/40 border border-white/5 print:bg-transparent print:border-none print:p-0">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white print:text-black text-sm">
-                <span>B.Sc. in Computer Science & Engineering</span>
-                <span className="text-xs font-mono text-zinc-400 print:text-black">Ongoing</span>
-              </div>
-              <div className="text-xs text-zinc-400 print:text-black mt-0.5">
-                Mymensingh Engineering College (MEC), Bangladesh
-              </div>
-              <p className="text-xs text-zinc-300 print:text-black mt-2 leading-relaxed">
-                Core coursework: Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Computer Networks, Operating Systems, Theory of Computation.
-              </p>
+
+            <div className="space-y-2.5">
+              {PORTFOLIO_DATA.academicHistory.map((edu) => (
+                <div
+                  key={edu.level}
+                  className="p-3.5 rounded-xl bg-black/40 border border-white/5 print:bg-transparent print:border-none print:p-0"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white print:text-black text-sm">
+                    <span>
+                      {edu.level} — {edu.degree}
+                    </span>
+                    <span
+                      className={`font-mono text-xs ${
+                        edu.status === 'Ongoing' ? 'text-cyan-400 print:text-black' : 'text-[#C8FF00] print:text-black'
+                      }`}
+                    >
+                      {edu.result}
+                    </span>
+                  </div>
+                  <div className="text-xs text-zinc-400 print:text-black mt-0.5">
+                    {edu.institution} {edu.board && <span>• {edu.board}</span>}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

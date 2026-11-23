@@ -57,6 +57,16 @@ export interface PersonalInterest {
   reflection: string;
 }
 
+export interface AcademicRecord {
+  level: string;
+  degree: string;
+  institution: string;
+  result: string;
+  board?: string;
+  status: 'Ongoing' | 'Completed';
+  highlight?: string;
+}
+
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Kawser Ahmed Ratul",
@@ -103,10 +113,59 @@ export const PORTFOLIO_DATA = {
   socialLinks: {
     github: "https://github.com/KawserAhmedpro",
     linkedin: "https://www.linkedin.com/in/kawserahmedratulpro/",
-    email: "kawserahmed.ratul@gmail.com",
+    facebook: "https://www.facebook.com/kawserahmedpro",
+    email: "kawserahmedratul@gmail.com",
     resumeUrl: "#resume-modal",
     academicPortal: "https://mec.ac.bd"
   },
+
+  academicHistory: [
+    {
+      level: "B.Sc.",
+      degree: "B.Sc. in Computer Science & Engineering",
+      institution: "Mymensingh Engineering College (MEC)",
+      result: "Undergraduate (Ongoing)",
+      board: "Affiliated with University of Dhaka",
+      status: "Ongoing",
+      highlight: "Department of CSE"
+    },
+    {
+      level: "HSC",
+      degree: "Higher Secondary Certificate",
+      institution: "Hajiganj Degree College",
+      result: "GPA 5.00 / 5.00",
+      board: "Cumilla Board",
+      status: "Completed",
+      highlight: "Golden GPA 5.00"
+    },
+    {
+      level: "SSC",
+      degree: "Secondary School Certificate",
+      institution: "Waruk Rahmania High School",
+      result: "GPA 5.00 / 5.00",
+      board: "Cumilla Board",
+      status: "Completed",
+      highlight: "GPA 5.00"
+    },
+    {
+      level: "JSC",
+      degree: "Junior School Certificate",
+      institution: "Waruk Rahmania High School",
+      result: "GPA 5.00 / 5.00",
+      board: "Cumilla Board",
+      status: "Completed",
+      highlight: "GPA 5.00"
+    },
+    {
+      level: "PSC",
+      degree: "Primary School Certificate",
+      institution: "Waruk Govt Primary School",
+      result: "GPA 5.00 / 5.00",
+      board: "Cumilla Board",
+      status: "Completed",
+      highlight: "GPA 5.00"
+    }
+  ] as AcademicRecord[],
 
   telemetry: {
     systemStatus: "ONLINE // RUNNING EXPERIMENTS",
@@ -621,8 +680,9 @@ public async Task<IActionResult> GetPapers([FromQuery] string tag, [FromQuery] i
       responseBody: {
         success: true,
         message: "Dispatch accepted into queue. Direct channel ready.",
-        directEmail: "kawserahmed.ratul@gmail.com",
+        directEmail: "kawserahmedratul@gmail.com",
         linkedIn: "https://www.linkedin.com/in/kawserahmedratulpro/",
+        facebook: "https://www.facebook.com/kawserahmedpro",
         github: "https://github.com/KawserAhmedpro",
         status: "Queued"
       },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2, Terminal, Cpu, Database, CheckCircle, Radio } from 'lucide-react';
+import { Code2, Terminal, Cpu, Database, Award, Radio, GraduationCap } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { sound } from '../utils/sound';
 
@@ -13,7 +13,7 @@ export const AboutSection: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[#C8FF00] tracking-wider uppercase mb-2">
-              <span>02 // IDENTITY</span>
+              <span>02 // IDENTITY & BACKGROUND</span>
               <span>•</span>
               <span className="text-zinc-500">MEC CSE STUDENT</span>
             </div>
@@ -34,56 +34,55 @@ export const AboutSection: React.FC = () => {
               {/* Dossier Header */}
               <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-[#C8FF00]" />
-                  <span className="text-white font-bold tracking-wider">ACADEMIC_DOSSIER // SPEC</span>
+                  <GraduationCap className="w-4 h-4 text-[#C8FF00]" />
+                  <span className="text-white font-bold tracking-wider">ACADEMIC_RECORD // MEC</span>
                 </div>
-                <span className="text-[10px] text-[#C8FF00] font-bold px-1.5 py-0.5 rounded bg-[#C8FF00]/10 border border-[#C8FF00]/20">
-                  VERIFIED
+                <span className="text-[10px] text-[#C8FF00] font-bold px-2 py-0.5 rounded bg-[#C8FF00]/10 border border-[#C8FF00]/25">
+                  GPA 5.00 STREAK
                 </span>
               </div>
 
-              {/* Student Identity Banner */}
-              <div className="p-4 rounded-xl bg-black/40 border border-white/5 space-y-2">
-                <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="text-zinc-400">NAME:</span>
-                  <span className="text-white font-bold">{PORTFOLIO_DATA.personal.name}</span>
-                </div>
-                <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="text-zinc-400">INSTITUTION:</span>
-                  <span className="text-zinc-200 font-semibold">{PORTFOLIO_DATA.personal.institution}</span>
-                </div>
-                <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="text-zinc-400">PROGRAM:</span>
-                  <span className="text-[#C8FF00] font-semibold">B.Sc. in CSE (Undergraduate)</span>
-                </div>
-                <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="text-zinc-400">COORDINATES:</span>
-                  <span className="text-zinc-400">{PORTFOLIO_DATA.personal.coordinates}</span>
+              {/* Verified Merit Achievement Pill */}
+              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center gap-2.5">
+                <Award className="w-4 h-4 text-amber-400 shrink-0" />
+                <div className="text-[11px] font-mono text-amber-200">
+                  <strong className="text-white font-bold">Consistent Academic Excellence:</strong> Achieved GPA 5.00 in PSC, JSC, SSC, and HSC under Cumilla Board.
                 </div>
               </div>
 
-              {/* Coursework & Foundations */}
-              <div className="space-y-2 font-mono text-xs">
-                <div className="text-[11px] text-zinc-500 uppercase tracking-wider font-bold">
-                  Core Engineering Coursework:
+              {/* Complete Educational Timeline Breakdown */}
+              <div className="space-y-2.5 font-mono">
+                <div className="text-[11px] text-zinc-400 uppercase tracking-wider font-bold">
+                  Education History:
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-[11px] text-zinc-300">
-                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
-                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
-                    <span>Data Structures</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
-                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
-                    <span>Algorithm Design</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
-                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
-                    <span>Database Systems</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/5 border border-white/5 flex items-center gap-1.5">
-                    <CheckCircle className="w-3 h-3 text-[#C8FF00] shrink-0" />
-                    <span>Object-Oriented Design</span>
-                  </div>
+
+                <div className="space-y-2 text-xs">
+                  {PORTFOLIO_DATA.academicHistory.map((edu) => (
+                    <div
+                      key={edu.level}
+                      className="p-3 rounded-xl bg-black/40 border border-white/5 hover:border-white/15 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="px-1.5 py-0.5 rounded bg-white/10 text-white font-bold text-[10px]">
+                            {edu.level}
+                          </span>
+                          <span className="font-bold text-white text-xs">{edu.degree}</span>
+                        </div>
+                        <span
+                          className={`font-mono font-bold text-[11px] ${
+                            edu.status === 'Ongoing' ? 'text-cyan-400' : 'text-[#C8FF00]'
+                          }`}
+                        >
+                          {edu.result}
+                        </span>
+                      </div>
+
+                      <div className="mt-1 text-[11px] text-zinc-400 font-sans">
+                        {edu.institution} {edu.board && <span className="text-zinc-500">• {edu.board}</span>}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -117,7 +116,10 @@ export const AboutSection: React.FC = () => {
                 My name is <strong className="text-white font-semibold">Kawser Ahmed Ratul</strong>. I am an undergraduate Computer Science and Engineering student at <strong className="text-white font-semibold">Mymensingh Engineering College</strong> in Bangladesh.
               </p>
               <p>
-                In an era dominated by rapid hype cycles and superficial frameworks, I find my satisfaction in understanding the ground beneath the surface: how backend web servers accept TCP sockets, how relational databases execute query plans, and how neural representations encode language.
+                Throughout my academic journey — from achieving GPA 5.00 across PSC, JSC, SSC, and HSC to diving into the rigors of university engineering — I have prioritized discipline, deep understanding, and steady commitment over quick shortcuts.
+              </p>
+              <p>
+                In software engineering, I gravitate toward backend systems: how web servers accept network connections, how relational databases execute query plans, and how neural representations encode language.
               </p>
               <p>
                 My core backend development focus is with <strong className="text-white font-semibold">C# and ASP.NET Core</strong>. I appreciate the strict type safety, performance characteristics, and clear architectural boundaries the .NET ecosystem affords. When studying database management, I prioritize relational integrity, indexing strategies, and transactional consistency in PostgreSQL.
